@@ -26,12 +26,11 @@ formulas=(
 )
 
 casks=(
+  macvim
   google-chrome
   iterm2
   virtualbox
   docker
-  docker-machine
-  macvim
 )
 
 brew tap ${taps[@]}
