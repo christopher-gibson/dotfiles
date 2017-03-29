@@ -23,7 +23,7 @@ alias localip "ipconfig getifaddr en0"
 alias dc "docker-compose"
 alias dvclean "docker volume rm (docker volume ls -qf dangling=true)"
 alias diprune "docker rmi (docker images -f 'dangling=true' -q)"
-alias dm-unset "eval (docker-machine env --unset)"
+alias dmu "eval (docker-machine env --unset)"
 
 alias ag "ag --hidden --ignore .git"
 
