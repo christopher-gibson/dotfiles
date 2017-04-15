@@ -3,23 +3,6 @@
 # Install fish
 curl -L http://get.oh-my.fish | fish
 
-# Install oh my fish
-omf install
-
-# Install omf packages and theme
-omfpackages=(
-  nvm
-  osx
-  nvm
-  rbenv
-  foreign-env
-  android-sdk
-  bobthefish
-)
-
-omf install ${omfpackages[@]}
-omf theme bobthefish
-
 # Fix for theme rbenv issue
 rbenv global system
 
