@@ -15,7 +15,21 @@ if has_key(g:plugs, 'vim-easymotion')
   let g:EasyMotion_smartcase=1
 
   map <leader> <Plug>(easymotion-prefix)
+
+  " s{char}{char} to move to {char}{char}
   nmap s <Plug>(easymotion-overwin-f2)
+
+  " <Leader>f{char} to move to {char}
+  map  <Leader>f <Plug>(easymotion-bd-f)
+  nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+  " Move to line
+  map S <Plug>(easymotion-bd-jk)
+  nmap S <Plug>(easymotion-overwin-line)
+
+  " Move to word
+  map  <Leader>w <Plug>(easymotion-bd-w)
+  nmap <Leader>w <Plug>(easymotion-overwin-w)
 endif
 
 if has_key(g:plugs, 'vim-easyclip')
@@ -106,4 +120,9 @@ if has_key(g:plugs, 'vim-airline')
   let g:airline_left_alt_sep=''
   let g:airline_right_sep=''
   let g:airline_right_alt_sep=''
+endif
+
+if has_key(g:plugs, 'auto-pairs')
+  let g:AutoPairsMultilineClose = 0
+  let g:AutoPairsFlyMode = 0
 endif
