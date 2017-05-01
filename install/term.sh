@@ -3,6 +3,10 @@
 # Install fish
 curl -L http://get.oh-my.fish | fish
 
+# Install zsh
+git clone git@github.com:zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
 # Fix for theme rbenv issue
 rbenv global system
 
