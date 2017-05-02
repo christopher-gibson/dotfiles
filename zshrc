@@ -64,8 +64,6 @@ plugins=(
   yarn
   mix
   react-native
-  zsh-autosuggestions
-  zsh-syntax-highlighting
   history-substring-search
   shrink-path
 )
