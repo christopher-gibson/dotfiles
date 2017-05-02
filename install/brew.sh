@@ -11,7 +11,6 @@ formulas=(
   coreutils
   git
   tmux
-  fish
   python3
   node
   yarn
