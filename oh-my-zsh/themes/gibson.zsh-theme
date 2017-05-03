@@ -8,16 +8,21 @@ zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git
 
-theme_precmd () {
-  if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b %c%u%f'
-  } else {
-    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b %c%u%F{red}●%f'
-  }
+zstyle ':vcs_info:git+post-backend:*' hooks git-remote-staged
 
-  vcs_info
+function +vi-git-remote-staged() {
+  if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b %c%u%F{red}●%f'
+  elif (( gitstaged || gitunstaged )); then
+    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b %c%u%f'
+  else
+    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b%f'
+  fi
 }
 
+theme_precmd () {
+  vcs_info
+}
 
 prompt_dir() {
   echo -n '%F{magenta}$(shrink_path -f)%f'
