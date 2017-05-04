@@ -30,22 +30,28 @@ prompt_root() {
   fi
 }
 
+prompt_docker_machine() {
+  if [[ ! -z $DOCKER_MACHINE_NAME ]]; then
+    echo -n "($DOCKER_MACHINE_NAME) "
+  fi
+}
+
 prompt_dir() {
-  echo -n '%F{magenta}$(shrink_path -f)%f'
+  echo -n "%F{magenta}$(shrink_path -f)%f"
 }
 
 prompt_git() {
-  echo -n '${vcs_info_msg_0_}'
+  echo -n "${vcs_info_msg_0_}"
 }
 
 prompt_end() {
   echo -n "%B%(?.%F{15}.%F{9}%})"
-  echo -n ' %% '
+  echo -n " %% "
   echo -n "%f%b"
 }
 
 prompt_time() {
-  echo -n '%F{8}%D{%a %b %d %H:%M:%S}%f'
+  echo -n "%F{8}%D{%a %b %d %H:%M:%S}%f"
 }
 
 prompt_reset() {
@@ -54,6 +60,7 @@ prompt_reset() {
 
 build_left_prompt() {
   prompt_root
+  prompt_docker_machine
   prompt_dir
   prompt_git
   prompt_end
@@ -64,8 +71,8 @@ build_right_prompt() {
   prompt_time
 }
 
-PROMPT="$(build_left_prompt)"
-RPROMPT="$(build_right_prompt)"
+PROMPT='$(build_left_prompt)'
+RPROMPT='$(build_right_prompt)'
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
