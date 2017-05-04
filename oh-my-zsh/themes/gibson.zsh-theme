@@ -24,6 +24,12 @@ theme_precmd () {
   vcs_info
 }
 
+prompt_root() {
+  if [[ $USER == 'root' ]]; then
+    echo -n "%{$fg_bold[red]%}[%n] %{$reset_color%}"
+  fi
+}
+
 prompt_dir() {
   echo -n '%F{magenta}$(shrink_path -f)%f'
 }
@@ -33,20 +39,28 @@ prompt_git() {
 }
 
 prompt_end() {
-  echo -n ' %f%B%%%b '
+  echo -n "%B%(?.%f.%{$fg[red]%})"
+  echo -n ' %% '
+  echo -n "%{$reset_color%}"
 }
 
 prompt_time() {
   echo -n '%F{08}%D{%a %b %d %H:%M:%S}%f'
 }
 
+prompt_reset() {
+  echo -n "%{$reset_color%}"
+}
+
 build_left_prompt() {
+  prompt_root
   prompt_dir
   prompt_git
   prompt_end
 }
 
 build_right_prompt() {
+  prompt_reset
   prompt_time
 }
 
