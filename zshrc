@@ -112,7 +112,7 @@ dkill() {
   for c in $(docker ps -q); do docker stop $c; done
   for c in $(docker ps -a -q); do docker rm $c; done
 }
-dms() { docker-machine env $1 }
+dms() { eval $(docker-machine env $1); }
 dmu() { eval $(docker-machine env --unset); }
 
 alias ag="ag --hidden --ignore .git"
