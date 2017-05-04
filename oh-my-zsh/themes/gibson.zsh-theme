@@ -3,8 +3,8 @@
 autoload -Uz vcs_info
 setopt prompt_subst
 
-zstyle ':vcs_info:*' stagedstr '%F{green}●'
-zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
+zstyle ':vcs_info:*' stagedstr '%F{10}●'
+zstyle ':vcs_info:*' unstagedstr '%F{11}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git
 
@@ -12,11 +12,11 @@ zstyle ':vcs_info:git+post-backend:*' hooks git-remote-staged
 
 function +vi-git-remote-staged() {
   if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b %c%u%F{red}●%f'
+    zstyle ':vcs_info:*' formats '%F{11}  %f%b %c%u%F{9}●%f'
   elif (( gitstaged || gitunstaged )); then
-    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b %c%u%f'
+    zstyle ':vcs_info:*' formats '%F{11}  %f%b %c%u%f'
   else
-    zstyle ':vcs_info:*' formats '%F{yellow}  %F{white}%b%f'
+    zstyle ':vcs_info:*' formats '%F{11}  %f%b%f'
   fi
 }
 
@@ -26,7 +26,7 @@ theme_precmd () {
 
 prompt_root() {
   if [[ $USER == 'root' ]]; then
-    echo -n "%{$fg_bold[red]%}[%n] %{$reset_color%}"
+    echo -n '%F{9}[%n]%f '
   fi
 }
 
@@ -39,17 +39,17 @@ prompt_git() {
 }
 
 prompt_end() {
-  echo -n "%B%(?.%f.%{$fg[red]%})"
+  echo -n "%B%(?.%F{15}.%F{9}%})"
   echo -n ' %% '
-  echo -n "%{$reset_color%}"
+  echo -n "%f%b"
 }
 
 prompt_time() {
-  echo -n '%F{08}%D{%a %b %d %H:%M:%S}%f'
+  echo -n '%F{8}%D{%a %b %d %H:%M:%S}%f'
 }
 
 prompt_reset() {
-  echo -n "%{$reset_color%}"
+  echo -n "%f%b"
 }
 
 build_left_prompt() {
