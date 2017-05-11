@@ -92,6 +92,10 @@ if has_key(g:plugs, 'ale')
   nmap <Leader>k <Plug>(ale_previous_wrap)
   nmap <Leader>j <Plug>(ale_next_wrap)
 
+  let g:ale_linters = {
+    \ 'html': ['htmlhint'],
+    \ }
+
   let g:ale_set_signs=0
 endif
 
