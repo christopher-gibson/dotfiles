@@ -9,9 +9,10 @@
   co = checkout
   s = status -s
   tree = log --oneline --graph --decorate --date=short
-  l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
   last = log -1 HEAD
   undo = reset HEAD~
+  ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ll = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --numstat
   aliases = "!git config -l | grep alias | cut -c 7-"
 
 [core]
