@@ -106,11 +106,25 @@ if has_key(g:plugs, 'vim-smooth-scroll')
   noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 endif
 
-if has_key(g:plugs, 'neocomplete.vim')
+if has('nvim') && has_key(g:plugs, 'deoplete.nvim')
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#file#enable_buffer_path = 1
+
+  inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+elseif has_key(g:plugs, 'neocomplete.vim')
   let g:acp_enableAtStartup=0
   let g:neocomplete#enable_at_startup=1
 
   inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+endif
+
+if has_key(g:plugs, 'neosnippet')
+  " SnipMate compatilibity for ng2
+  let g:neosnippet#enable_snipmate_compatibility = 1
+
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
 endif
 
 if has_key(g:plugs, 'vim-airline')

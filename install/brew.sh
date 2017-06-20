@@ -12,6 +12,7 @@ formulas=(
   git
   tmux
   python3
+  neovim
   node
   yarn
   nvm

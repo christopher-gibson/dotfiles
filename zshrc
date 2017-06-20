@@ -94,7 +94,7 @@ alias .....="cd ../../../.."
 pwd_name() { basename $(pwd) | tr " ." - }
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
-alias vim="mvim -v"
+alias vim="nvim"
 alias vim-install="vim +PlugInstall +qa"
 alias vim-update="vim +PlugUpdate +qa"
 alias vim-clean="vim +PlugClean +y +qa"
@@ -117,3 +117,5 @@ dmu() { eval $(docker-machine env --unset); }
 
 alias ag="ag --hidden --ignore .git"
 
+
+[[ -s "/Users/cgibson026/.gvm/scripts/gvm" ]] && source "/Users/cgibson026/.gvm/scripts/gvm"

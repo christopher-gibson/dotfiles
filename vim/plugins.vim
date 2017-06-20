@@ -8,7 +8,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Konfekt/vim-smartbraces' " {} as paragraph navigation
 Plug 'terryma/vim-smooth-scroll'
-Plug 'matze/vim-move' " Move lines
 
 Plug 'vim-airline/vim-airline'
 
@@ -18,7 +17,6 @@ Plug 'yggdroot/indentline' " Add vertical line for space indent
 
 " git
 Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -31,7 +29,20 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'editorconfig/editorconfig-vim'
 
 " Autocomplete
-Plug 'Shougo/neocomplete.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/neocomplete.vim'
+end
+
+Plug 'wokalski/autocomplete-flow'
+Plug 'slashmili/alchemist.vim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+" Snippets
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " Comments
 Plug 'tpope/vim-commentary'
