@@ -106,7 +106,7 @@ if has_key(g:plugs, 'vim-smooth-scroll')
   noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 endif
 
-if has('nvim') && has_key(g:plugs, 'deoplete.nvim')
+if has_key(g:plugs, 'deoplete.nvim')
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#file#enable_buffer_path = 1
 
@@ -116,6 +116,10 @@ elseif has_key(g:plugs, 'neocomplete.vim')
   let g:neocomplete#enable_at_startup=1
 
   inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+endif
+
+if has_key(g:plugs, 'nvim-typescript')
+   set completeopt-=preview
 endif
 
 if has_key(g:plugs, 'neosnippet')

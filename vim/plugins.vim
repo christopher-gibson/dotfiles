@@ -34,7 +34,7 @@ if has('nvim')
   Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
 else
   Plug 'Shougo/neocomplete.vim'
-end
+endif
 
 Plug 'wokalski/autocomplete-flow'
 Plug 'slashmili/alchemist.vim'
