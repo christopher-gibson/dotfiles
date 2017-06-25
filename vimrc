@@ -16,7 +16,7 @@ set showcmd
 
 set background=dark
 set termguicolors
-set colorcolumn=100
+set colorcolumn=80
 set cursorline
 
 " Enable mouse but hide when typing
