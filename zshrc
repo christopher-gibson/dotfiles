@@ -83,7 +83,7 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim -v'
+  export EDITOR='nvim'
 fi
 
 # ssh
@@ -105,9 +105,6 @@ alias vim-clean="vim +PlugClean +y +qa"
 tn() { tmux new -s $(pwd_name) }
 alias tm="tmux"
 
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-
 alias dc="docker-compose"
 dvclean() { for c in $(docker volume ls -qf dangling=true); do docker volume rm $c; done }
 diprune() { for c in $(docker images -f 'dangling=true' -q); do docker rmi $c; done }
@@ -115,8 +112,6 @@ dkill() {
   for c in $(docker ps -q); do docker stop $c; done
   for c in $(docker ps -a -q); do docker rm $c; done
 }
-dms() { eval $(docker-machine env $1); }
-dmu() { eval $(docker-machine env --unset); }
 
 alias ag="ag --hidden --ignore .git"
 

@@ -18,4 +18,4 @@
 [core]
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
-  editor = mvim -v
+  editor = nvim
