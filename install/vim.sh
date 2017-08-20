@@ -1,5 +1,7 @@
 #!/bin/bash
 
+brew install neovim the_silver_searcher
+
 # Python support for neovim
 pip3 install --user neovim
 

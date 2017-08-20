@@ -1,7 +1,8 @@
 #!/bin/bash
 
-source ./install/brew.sh
+source ./install/dependencies.sh
 source ./install/term.sh
+source ./install/programming.sh
 source ./install/vim.sh
 source ./install/atom.sh
 

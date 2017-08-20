@@ -70,6 +70,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+source /usr/local/opt/asdf/asdf.sh
+
 # User configuration
 
 # You may need to manually set your language environment
