@@ -68,6 +68,7 @@ plugins=(
   shrink-path
 )
 
+source ~/.zshrc-local
 source $ZSH/oh-my-zsh.sh
 
 source /usr/local/opt/asdf/asdf.sh
@@ -96,6 +97,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# Fix rake issues
+alias rake='noglob rake'
+
 pwd_name() { basename $(pwd) | tr " ." - }
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
@@ -119,3 +123,6 @@ alias ag="ag --hidden --ignore .git"
 
 
 [[ -s "/Users/cgibson026/.gvm/scripts/gvm" ]] && source "/Users/cgibson026/.gvm/scripts/gvm"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

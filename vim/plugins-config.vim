@@ -1,9 +1,4 @@
 " Plugin settings
-
-if has_key(g:plugs, 'vim-closetag')
-  let g:closetag_filenames="*.html,*.jsx"
-endif
-
 if has_key(g:plugs, 'vim-devicons')
   let g:WebDevIconsOS='Darwin'
   let g:WebDevIconsUnicodeDecorateFolderNodes=1
@@ -47,6 +42,7 @@ endif
 if has_key(g:plugs, 'vim-polyglot')
   let g:jsx_ext_required=0
   let g:vim_markdown_conceal=0
+  let g:javascript_plugin_flow=1
 endif
 
 if has_key(g:plugs, 'matchtagalways')
@@ -94,16 +90,10 @@ if has_key(g:plugs, 'ale')
 
   let g:ale_linters = {
     \ 'html': ['htmlhint'],
+    \ 'javascript': ['eslint', 'flow'],
     \ }
 
-  let g:ale_set_signs=0
-endif
-
-if has_key(g:plugs, 'vim-smooth-scroll')
-  noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-  noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-  noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-  noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+  let g:ale_sign_column_always = 1
 endif
 
 if has_key(g:plugs, 'deoplete.nvim')
@@ -111,24 +101,16 @@ if has_key(g:plugs, 'deoplete.nvim')
   let g:deoplete#file#enable_buffer_path = 1
 
   inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-elseif has_key(g:plugs, 'neocomplete.vim')
-  let g:acp_enableAtStartup=0
-  let g:neocomplete#enable_at_startup=1
-
-  inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 endif
 
-if has_key(g:plugs, 'nvim-typescript')
-   set completeopt-=preview
-endif
+if has_key(g:plugs, 'vim-flow')
+  " I only need FlowType - using Ale for flow checking
+  let g:flow#enable = 0
 
-if has_key(g:plugs, 'neosnippet')
-  " SnipMate compatilibity for ng2
-  let g:neosnippet#enable_snipmate_compatibility = 1
+  " Lazy way to only use local flow
+  let g:flow#flowpath = 'node_modules/.bin/flow'
 
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
+  noremap <leader>t :FlowType<cr>
 endif
 
 if has_key(g:plugs, 'vim-airline')
@@ -147,4 +129,9 @@ endif
 if has_key(g:plugs, 'auto-pairs')
   let g:AutoPairsMultilineClose = 0
   let g:AutoPairsFlyMode = 0
+endif
+
+if has_key(g:plugs, 'vim-gitgutter')
+  " Disable keys since they cause a delay with <leader>h
+  let g:gitgutter_map_keys = 0
 endif

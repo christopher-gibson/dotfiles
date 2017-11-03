@@ -1,21 +1,32 @@
 [user]
-  name = Chris Gibson
-  email = chris@chrisg.io
+	name = Chris Gibson
+	email = chris@chrisg.io
 
 [alias]
-  wip = "!git add . && git commit -m 'wip'"
+  aliases = "!git config -l | grep alias | cut -c 7-"
   amend = commit --amend --no-edit
-  pullr = pull --rebase
+  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
   co = checkout
+  cp = cherry-pick
+  last = log -1 HEAD
+  ll = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --numstat
+  ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  pullr = pull --rebase
   s = status -s
   tree = log --oneline --graph --decorate --date=short
-  last = log -1 HEAD
   undo = reset HEAD~
-  ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-  ll = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --numstat
-  aliases = "!git config -l | grep alias | cut -c 7-"
+  wip = "!git add . && git commit -m 'wip'"
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+  publish = "!git push -u origin $(git branch-name)"
+  resetto = "!git reset --hard origin/$(git branch-name)"
+  pusho = "!git push --set-upstream origin $(git branch-name)"
 
 [core]
-  excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
   editor = nvim
+  excludesfile = ~/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f

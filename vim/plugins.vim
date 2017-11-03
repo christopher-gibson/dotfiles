@@ -7,12 +7,14 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Konfekt/vim-smartbraces' " {} as paragraph navigation
-Plug 'terryma/vim-smooth-scroll'
+" Plug 'yuttie/comfortable-motion.vim'
+Plug 'dietsche/vim-lastplace' " Reopen files at last edit place
 
-Plug 'vim-airline/vim-airline'
+" Sorting
+Plug 'christoomey/vim-sort-motion'
 
 " ui related
-Plug 'dietsche/vim-lastplace' " Reopen files at last edit place
+Plug 'vim-airline/vim-airline'
 Plug 'yggdroot/indentline' " Add vertical line for space indent
 
 " git
@@ -28,28 +30,16 @@ Plug 'w0rp/ale' " Lint engine
 Plug 'hail2u/vim-css3-syntax'
 Plug 'editorconfig/editorconfig-vim'
 
-" Autocomplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/neocomplete.vim'
-endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'wokalski/autocomplete-flow'
-Plug 'slashmili/alchemist.vim'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-
-" Snippets
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'flowtype/vim-flow'
+Plug 'slashmili/alchemist.vim' " Elixir
 
 " Comments
 Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'alvan/vim-closetag' " Autoclose HTML tags
 Plug 'valloric/matchtagalways' " Highlight HTML tags
 Plug 'jiangmiao/auto-pairs' " Insert/delete in pairs
 
