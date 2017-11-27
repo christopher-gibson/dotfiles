@@ -7,7 +7,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Konfekt/vim-smartbraces' " {} as paragraph navigation
-" Plug 'yuttie/comfortable-motion.vim'
 Plug 'dietsche/vim-lastplace' " Reopen files at last edit place
 
 " Sorting
@@ -26,6 +25,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Syntax
 Plug 'sheerun/vim-polyglot' " Language pack
+Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale' " Lint engine
 Plug 'hail2u/vim-css3-syntax'
 Plug 'editorconfig/editorconfig-vim'
@@ -33,7 +33,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'flowtype/vim-flow'
-Plug 'slashmili/alchemist.vim' " Elixir
 
 " Comments
 Plug 'tpope/vim-commentary'
