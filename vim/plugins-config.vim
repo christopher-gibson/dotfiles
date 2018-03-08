@@ -104,16 +104,6 @@ if has_key(g:plugs, 'deoplete.nvim')
   inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 endif
 
-if has_key(g:plugs, 'vim-flow')
-  " I only need FlowType - using Ale for flow checking
-  let g:flow#enable = 0
-
-  " Lazy way to only use local flow
-  let g:flow#flowpath = 'node_modules/.bin/flow'
-
-  noremap <leader>t :FlowType<cr>
-endif
-
 if has_key(g:plugs, 'vim-airline')
   set laststatus=2 " Always show airline
   set noshowmode

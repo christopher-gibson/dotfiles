@@ -32,7 +32,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'flowtype/vim-flow'
+" Plug 'flowtype/vim-flow'
 
 " Comments
 Plug 'tpope/vim-commentary'

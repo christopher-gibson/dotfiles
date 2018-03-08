@@ -19,7 +19,7 @@
   fwip = "!git add . && git commit -m 'WIP: A neverending story (this should not exist)' --no-verify"
   branch-name = "!git rev-parse --abbrev-ref HEAD"
   publish = "!git push -u origin $(git branch-name)"
-  resetto = "!git reset --hard origin/$(git branch-name)"
+  resetto = "!git fetch && git reset --hard origin/$(git branch-name)"
   pusho = "!git push --set-upstream origin $(git branch-name)"
 
 [core]

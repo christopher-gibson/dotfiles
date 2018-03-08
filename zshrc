@@ -125,4 +125,22 @@ alias ag="ag --hidden --ignore .git"
 [[ -s "/Users/cgibson026/.gvm/scripts/gvm" ]] && source "/Users/cgibson026/.gvm/scripts/gvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/bin:$(yarn global bin)"
+
+kport() {
+  pid=$(lsof -i :"$1" -t)
+
+  if [[ -n $pid ]]
+  then
+    echo "Do you want to kill it? (y/n)"
+    read answer
+    if echo "$answer" | grep -iq "^y" ;then
+      kill -9 $pid
+      echo "Killing..."
+    else
+      echo "Exiting..."
+    fi
+  else
+    echo "Nothing found..."
+  fi
+}
