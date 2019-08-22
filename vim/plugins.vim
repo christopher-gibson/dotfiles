@@ -31,6 +31,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'terryma/vim-multiple-cursors'
 
 " Plug 'flowtype/vim-flow'
 

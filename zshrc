@@ -52,6 +52,7 @@ ZSH_THEME="gibson"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  asdf
   git
   docker
   docker-compose
@@ -70,8 +71,6 @@ plugins=(
 
 source ~/.zshrc-local
 source $ZSH/oh-my-zsh.sh
-
-source /usr/local/opt/asdf/asdf.sh
 
 # User configuration
 
@@ -143,4 +142,9 @@ kport() {
   else
     echo "Nothing found..."
   fi
+}
+
+fake() {
+  echo "Fake $1!"
+  pkill -9 -f $1
 }
