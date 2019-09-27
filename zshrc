@@ -148,3 +148,5 @@ fake() {
   echo "Fake $1!"
   pkill -9 -f $1
 }
+
+alias dbup="rake db:migrate db:seed db:structure:dump graphql:schema:dump && annotate"

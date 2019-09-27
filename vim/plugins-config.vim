@@ -77,7 +77,7 @@ if has_key(g:plugs, 'nerdtree')
   let NERDTreeMapOpenSplit='<c-s>'
   let NERDTreeMapOpenVSplit='<c-v>'
 
-  map <C-n> :NERDTreeToggle<CR>
+  map <C-b> :NERDTreeToggle<CR>
 endif
 
 if has_key(g:plugs, 'gruvbox')
@@ -131,4 +131,11 @@ endif
 if has_key(g:plugs, 'vim-gitgutter')
   " Disable keys since they cause a delay with <leader>h
   let g:gitgutter_map_keys = 0
+endif
+
+if has_key(g:plugs, 'ack.vim')
+  let g:ackprg = 'ag --vimgrep'
+
+  cnoreabbrev Ack Ack!
+  nnoremap <Leader>a :Ack!<Space>
 endif

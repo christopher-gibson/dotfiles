@@ -33,6 +33,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'terryma/vim-multiple-cursors'
 
+Plug 'mileszs/ack.vim'
+
 " Plug 'flowtype/vim-flow'
 
 " Comments
