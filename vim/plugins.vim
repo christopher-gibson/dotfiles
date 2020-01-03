@@ -25,7 +25,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Syntax
 Plug 'sheerun/vim-polyglot' " Language pack
-Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale' " Lint engine
 Plug 'hail2u/vim-css3-syntax'
 Plug 'editorconfig/editorconfig-vim'

@@ -49,6 +49,7 @@ endif
 if has_key(g:plugs, 'matchtagalways')
   let g:mta_filetypes={
     \ 'javascript.jsx': 1,
+    \ 'javascriptreact': 1,
     \ 'html' : 1,
     \ }
 endif
@@ -92,10 +93,12 @@ if has_key(g:plugs, 'ale')
   let g:ale_linters = {
     \ 'html': ['htmlhint'],
     \ 'javascript': ['eslint', 'flow'],
+    \ 'javascriptreact': ['eslint', 'flow'],
     \ }
 
     let g:ale_fixers = {
     \   'javascript': ['prettier'],
+    \   'javascriptreact': ['prettier'],
     \   'css': ['prettier'],
     \}
 
