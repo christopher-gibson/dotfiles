@@ -9,8 +9,8 @@ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
-asdf install nodejs 8.3.0
-asdf global nodejs 8.3.0
+asdf install nodejs latest
+asdf global nodejs latest
 
 # Install yarn but use asdf managed node
 brew install yarn --ignore-dependencies

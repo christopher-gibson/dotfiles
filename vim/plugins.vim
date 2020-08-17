@@ -3,8 +3,8 @@
 call plug#begin()
 
 " Navigation
-Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Konfekt/vim-smartbraces' " {} as paragraph navigation
 Plug 'dietsche/vim-lastplace' " Reopen files at last edit place
@@ -25,11 +25,12 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Syntax
 Plug 'sheerun/vim-polyglot' " Language pack
-Plug 'w0rp/ale' " Lint engine
-Plug 'hail2u/vim-css3-syntax'
+" Plug 'hail2u/vim-css3-syntax'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'w0rp/ale' " Lint engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'mileszs/ack.vim'
