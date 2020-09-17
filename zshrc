@@ -56,14 +56,9 @@ plugins=(
   git
   docker
   docker-compose
-  git-flow-avh
-  golang
-  nvm
   osx
   node
-  npm
   yarn
-  mix
   react-native
   history-substring-search
   shrink-path
