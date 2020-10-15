@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./install/dependencies.sh
-source ./install/term.sh
 source ./install/programming.sh
 source ./install/vim.sh
 

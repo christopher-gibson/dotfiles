@@ -26,8 +26,11 @@
   attributesfile = ~/.gitattributes
   editor = nvim
   excludesfile = ~/.gitignore_global
+	autocrlf = input
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
 	required = true
 	smudge = git-lfs smudge -- %f
+[pull]
+	rebase = true

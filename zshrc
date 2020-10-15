@@ -119,7 +119,7 @@ alias ag="ag --hidden --ignore .git"
 [[ -s "/Users/cgibson026/.gvm/scripts/gvm" ]] && source "/Users/cgibson026/.gvm/scripts/gvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin:$(yarn global bin)"
+# export PATH="$PATH:$HOME/.rvm/bin:$(yarn global bin)"
 
 kport() {
   pid=$(lsof -i :"$1" -t)
@@ -145,3 +145,5 @@ fake() {
 }
 
 alias dbup="rake db:migrate db:seed db:structure:dump graphql:schema:dump && annotate"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
