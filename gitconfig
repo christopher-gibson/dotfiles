@@ -5,7 +5,7 @@
 [alias]
   aliases = "!git config -l | grep alias | cut -c 7-"
   amend = commit --amend --no-edit
-  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+  destroy-branches = "!git branch | grep  -v '\\*\\|master\\|release' | xargs -n 1 git branch -D"
   co = checkout
   cp = cherry-pick
   last = log -1 HEAD
@@ -26,7 +26,7 @@
   attributesfile = ~/.gitattributes
   editor = nvim
   excludesfile = ~/.gitignore_global
-	autocrlf = input
+	autocrlf = false
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
