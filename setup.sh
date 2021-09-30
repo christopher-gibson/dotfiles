@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ./install/dependencies.sh
 source ./install/programming.sh
 source ./install/vim.sh
 

@@ -5,7 +5,11 @@ call plug#begin()
 " Navigation
 " Plug 'easymotion/vim-easymotion'
 " Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'camspiers/snap'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'Konfekt/vim-smartbraces' " {} as paragraph navigation
 Plug 'dietsche/vim-lastplace' " Reopen files at last edit place
 

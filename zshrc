@@ -59,7 +59,6 @@ plugins=(
   osx
   node
   yarn
-  react-native
   history-substring-search
   shrink-path
 )

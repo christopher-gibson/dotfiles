@@ -50,8 +50,17 @@ if has_key(g:plugs, 'matchtagalways')
   let g:mta_filetypes={
     \ 'javascript.jsx': 1,
     \ 'javascriptreact': 1,
+    \ 'typescript': 1,
+    \ 'typescriptreact': 1,
     \ 'html' : 1,
     \ }
+endif
+
+if has_key(g:plugs, 'telescope.nvim')
+  nnoremap <leader>ff <cmd>Telescope find_files<cr>
+  nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 endif
 
 if has_key(g:plugs, 'ctrlp.vim')

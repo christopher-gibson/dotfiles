@@ -80,10 +80,6 @@ set undodir=~/.vim/undo
 set undofile
 set undolevels=1000
 
-if !&readonly
-  set fileencoding=utf-8
-endif
-
 " Use space as leader
 let mapleader=" "
 
@@ -136,3 +132,5 @@ augroup END
 
 source $HOME/.vim/plugins.vim
 source $HOME/.vim/plugins-config.vim
+
+set encoding=utf8
