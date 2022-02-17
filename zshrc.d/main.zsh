@@ -1,7 +1,12 @@
+export ZSH=$HOME/.oh-my-zsh
+
 ZSH_THEME="gibson"
 
 plugins=(
+  asdf
   git
+  docker
+  docker-compose
   node
   yarn
   history-substring-search
@@ -30,4 +35,3 @@ fake() {
   echo "Fake $1!"
   pkill -9 -f $1
 }
-

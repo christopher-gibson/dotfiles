@@ -155,6 +155,7 @@ endif
 
 " COC has a ton of config
 if has_key(g:plugs, 'coc.nvim')
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-snippets', 'coc-solargraph']
   " Give more space for displaying messages.
   set cmdheight=1
 
