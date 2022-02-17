@@ -13,10 +13,6 @@ plugins=(
   shrink-path
 )
 
-if [ -f ~/.zshrc-local]; then
-  source ~/.zshrc-local
-fi
-
 export EDITOR='nvim'
 
 alias ..="cd .."
