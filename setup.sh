@@ -3,9 +3,6 @@
 # Install dependencies
 sudo apt-get install -y rcm silversearcher-ag
 
-echo "Setting up dotfiles"
-mv .zshrc .zshrc-local
-
 # Add neovim python
 pip3 install --user neovim
 
