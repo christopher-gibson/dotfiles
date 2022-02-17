@@ -1,8 +1,16 @@
 #!/bin/bash
 
-source ./install/dependencies.sh
-source ./install/programming.sh
-source ./install/vim.sh
+# Install dependencies
+sudo apt-get install -y rcm silversearcher-ag
 
-ln -s ~/.dotfiles/iterm/themes ~/themes
+echo "Setting up dotfiles"
+mv .zshrc .zshrc-local
+
+# Add neovim python
+pip3 install --user neovim
+
+# create vim undo directory
+mkdir -p ~/.vim/undo
+
+# symlink dotfiles
 rcup -x README.md -x setup.sh -x install -x iterm -v
