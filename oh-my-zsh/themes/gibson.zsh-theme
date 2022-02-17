@@ -24,10 +24,8 @@ theme_precmd () {
   vcs_info
 }
 
-prompt_root() {
-  if [[ $USER == 'root' ]]; then
-    echo -n '%F{9}[%n]%f '
-  fi
+user() {
+  echo -n '%F{9}[%n]%f '
 }
 
 # prompt_docker_machine() {
@@ -59,7 +57,7 @@ prompt_reset() {
 }
 
 build_left_prompt() {
-  prompt_root
+  user
   # prompt_docker_machine
   prompt_dir
   # prompt_git
