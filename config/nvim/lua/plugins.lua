@@ -5,7 +5,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- load packer
-vim.cmd("packadd packer.nvim")
+vim.cmd('packadd packer.nvim')
 
 return require('packer').startup(function(use)
   use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
@@ -13,11 +13,11 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension", event = "VimEnter" })
+  use({ 'Yggdroot/LeaderF', cmd = 'Leaderf', run = ':LeaderfInstallCExtension', event = 'VimEnter' })
 
   use 'editorconfig/editorconfig-vim'
 
-  use "lukas-reineke/indent-blankline.nvim"
+  use 'lukas-reineke/indent-blankline.nvim'
 
   use {
     'ethanholz/nvim-lastplace',
@@ -25,10 +25,10 @@ return require('packer').startup(function(use)
   }
 
   use {
-    "windwp/nvim-autopairs",
+    'windwp/nvim-autopairs',
     config = function()
-      require("nvim-autopairs").setup()
-      require("config/autopair")
+      require('nvim-autopairs').setup()
+      require('config/autopair')
     end,
   }
 
@@ -49,13 +49,13 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'valloric/matchtagalways'
   use 'ryanoasis/vim-devicons'
-  use({"tpope/vim-commentary", event = "VimEnter"})
+  use({'tpope/vim-commentary', event = 'VimEnter'})
 
   use({
-    "gbprod/cutlass.nvim",
+    'gbprod/cutlass.nvim',
     config = function()
-      require("cutlass").setup({
-        cut_key = "x"
+      require('cutlass').setup({
+        cut_key = 'x'
       })
     end
   })
@@ -65,10 +65,10 @@ return require('packer').startup(function(use)
   }
 
   use {
-    "ellisonleao/gruvbox.nvim",
+    'ellisonleao/gruvbox.nvim',
     config = function()
       vim.opt.termguicolors = true
-      vim.o.background = "dark" -- or "light" for light mode
+      vim.o.background = 'dark' -- or "light" for light mode
       vim.cmd([[colorscheme gruvbox]])
     end
   }
