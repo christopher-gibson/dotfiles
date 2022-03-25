@@ -12,6 +12,7 @@ plugins=(
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   plugins+=(
+    asdf
     macos
   )
 fi
