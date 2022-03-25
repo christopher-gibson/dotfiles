@@ -147,3 +147,4 @@ fake() {
 alias dbup="rake db:migrate db:seed db:structure:dump graphql:schema:dump && annotate"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
