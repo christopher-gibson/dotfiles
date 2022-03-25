@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
 
   use {
     'windwp/nvim-autopairs',
+    module = { 'nvim-autopairs' },
     config = function()
       require('nvim-autopairs').setup()
       require('config/autopair')
@@ -68,7 +69,7 @@ return require('packer').startup(function(use)
     'ellisonleao/gruvbox.nvim',
     config = function()
       vim.opt.termguicolors = true
-      vim.o.background = 'dark' -- or "light" for light mode
+      vim.o.background = 'dark' -- or 'light' for light mode
       vim.cmd([[colorscheme gruvbox]])
     end
   }
