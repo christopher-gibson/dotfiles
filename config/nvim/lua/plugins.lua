@@ -7,6 +7,16 @@ end
 -- load packer
 vim.cmd("packadd packer.nvim")
 
+-- auto
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerClean
+    autocmd BufWritePost plugins.lua source <afile> | PackerInstall
+  augroup end
+]])
+
 return require('packer').startup(function(use)
   use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 
@@ -21,12 +31,15 @@ return require('packer').startup(function(use)
 
   use {
     'ethanholz/nvim-lastplace',
-    config = function() require'nvim-lastplace'.setup {} end
+    config = function() require('nvim-lastplace').setup() end
   }
 
   use {
-    'windwp/nvim-autopairs',
-    config = function() require'nvim-autopairs'.setup {} end
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
+      require("config/autopair")
+    end,
   }
 
   use {

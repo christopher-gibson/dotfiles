@@ -53,10 +53,6 @@ let g:ale_fix_on_save = 1
   let g:airline_right_sep=''
   let g:airline_right_alt_sep=''
 
-" Autopairs
-  let g:AutoPairsMultilineClose = 0
-  let g:AutoPairsFlyMode = 0
-
 " COC has a ton of config
 let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-snippets', 'coc-solargraph']
 " Give more space for displaying messages.
