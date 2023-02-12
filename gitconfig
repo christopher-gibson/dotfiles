@@ -1,6 +1,6 @@
 [user]
 	name = Chris Gibson
-	email = chris@chrisg.io
+	email = christopher.gibson@instacart.com
 
 [alias]
   aliases = "!git config -l | grep alias | cut -c 7-"
@@ -28,6 +28,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
 	autocrlf = false
+	whitespace = trailing-space,space-before-tab
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
@@ -35,3 +36,19 @@
 	smudge = git-lfs smudge -- %f
 [pull]
 	rebase = true
+[http]
+	postBuffer = 524288000
+[mergetool]
+	keepBackup = false
+[diff]
+	mnemonicprefix = true
+[push]
+	default = simple
+[merge]
+	stat = true
+[credential]
+	helper = osxkeychain
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[feature]
+	manyFiles = 1

@@ -1,6 +1,5 @@
-" MacVim Settings
-
 set nocompatible
+set encoding=utf8
 
 syntax on
 filetype off
@@ -12,7 +11,6 @@ set ttyfast
 set visualbell
 set noerrorbells
 set showcmd
-
 
 set background=dark
 set termguicolors
@@ -80,59 +78,3 @@ set undodir=~/.vim/undo
 set undofile
 set undolevels=1000
 
-if !&readonly
-  set fileencoding=utf-8
-endif
-
-" Use space as leader
-let mapleader=" "
-
-" Reload config
-nnoremap <leader>R :source $MYVIMRC<CR>
-
-" Buffers
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprevious<CR>
-nmap <leader>q :bp <BAR> bd #<CR>
-
-" Select everything
-nmap <leader>a ggVG
-
-" Too much shiftiness
-:nmap ; :
-
-" Add new line outside insert
-nnoremap <cr> o<esc>
-
-" Move to beginning/end of line
-noremap H ^
-noremap L $
-
-" Keep selection after indent
-vnoremap < <gv
-vnoremap > >gv
-
-" Clear search
-nmap <silent> <leader>c :nohlsearch<CR>
-
-" Use arrows to adjust window size
-noremap <right> <C-w>10>
-noremap <left> <C-w>10<
-noremap <up> <C-w>10+
-noremap <down> <C-w>10-
-
-augroup vimrcEx
-  autocmd!
-
-  " Disable auto comment
-  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-  " Only show a cursorline in the active window
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter * set cursorline
-  autocmd InsertEnter * set nocursorline
-  autocmd InsertLeave * set cursorline
-augroup END
-
-source $HOME/.vim/plugins.vim
-source $HOME/.vim/plugins-config.vim
