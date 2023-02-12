@@ -1,4 +1,15 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "sourcekit.commandPath": "/usr/bin/sourcekit-lsp"
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "javascriptreact", "typescript", "typescriptreact", "ruby"],
+  "sourcekit.commandPath": "/usr/bin/sourcekit-lsp",
+  "suggest.noselect": true,
+  "languageserver": {
+    "sorbet": {
+      "command": "srb",
+      "args": ["tc", "--typed", "true", "--enable-all-experimental-lsp-features", "--lsp", "--disable-watchman"],
+      "filetypes": ["ruby"],
+      "rootPatterns": ["sorbet/config"],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
 }
