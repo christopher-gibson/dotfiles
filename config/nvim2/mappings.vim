@@ -12,9 +12,6 @@ nmap <leader>q :bp <BAR> bd #<CR>
 " Select everything
 nmap <leader>a ggVG
 
-" Too much shiftiness
-:nmap ; :
-
 " Add new line outside insert
 nnoremap <cr> o<esc>
 

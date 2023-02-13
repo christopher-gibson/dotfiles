@@ -3,6 +3,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+export PATH=/Users/christophergibson/.local/bin:$PATH
+export PATH="`yarn global bin`:$PATH"
+
 alias vim="nvim"
 
 pwd_name() { basename $(pwd) | tr " ." - }
@@ -15,3 +18,5 @@ fake() {
   echo "Fake $1!"
   pkill -9 -f $1
 }
+
+alias vim-update="vim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
