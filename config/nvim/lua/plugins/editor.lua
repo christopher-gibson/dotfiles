@@ -32,8 +32,18 @@ return {
         },
     },
 
+    { "echasnovski/mini.surround", enabled = false },
+    { "tpope/vim-surround" },
+
     {
         "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+            config = function()
+              require("telescope").load_extension("fzf")
+            end,
+        },
         opts = {
             defaults = {
                 layout_strategy = "vertical",
