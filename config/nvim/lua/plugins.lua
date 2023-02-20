@@ -1,80 +1,227 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  -- bootstrap lazy.nvim
+  -- stylua: ignore
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
+      lazypath })
 end
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
--- load packer
-vim.cmd('packadd packer.nvim')
+require("lazy").setup({
+  -- Used my multiple plugins
+  "nvim-lua/plenary.nvim",
+  -- Required for bufferline and lualine
+  "nvim-tree/nvim-web-devicons",
 
-return require('packer').startup(function(use)
-  use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
-
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  use({ 'Yggdroot/LeaderF', cmd = 'Leaderf', run = ':LeaderfInstallCExtension', event = 'VimEnter' })
-
-  use 'editorconfig/editorconfig-vim'
-
-  use 'lukas-reineke/indent-blankline.nvim'
-
-  use {
-    'ethanholz/nvim-lastplace',
-    config = function() require('nvim-lastplace').setup() end
-  }
-
-  use {
-    'windwp/nvim-autopairs',
+  -- Theme
+  {
+    "ellisonleao/gruvbox.nvim",
     config = function()
-      require('nvim-autopairs').setup()
-      require('config/autopair')
-    end
-  }
+      vim.o.background = "dark"
+      vim.cmd([[colorscheme gruvbox]])
+    end,
+  },
 
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+  { "akinsho/bufferline.nvim", config = true },
+  { "nvim-lualine/lualine.nvim", config = true },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    dependencies = {
+      "ellisonleao/gruvbox.nvim",
+    },
+  },
 
-  use 'tpope/vim-fugitive'
-  use 'sheerun/vim-polyglot'
-  use 'christoomey/vim-sort-motion'
-  use {'vim-airline/vim-airline-themes', event = 'VimEnter'}
-  use {'vim-airline/vim-airline', after = 'vim-airline-themes'}
-  use 'christoomey/vim-tmux-navigator'
-  use 'tmux-plugins/vim-tmux-focus-events'
-  use 'w0rp/ale'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'valloric/matchtagalways'
-  use 'ryanoasis/vim-devicons'
-  use({'tpope/vim-commentary', event = 'VimEnter'})
+  "editorconfig/editorconfig-vim",
+  "rrethy/vim-illuminate",
+  "christoomey/vim-sort-motion",
+  "tpope/vim-repeat",
+  "tpope/vim-surround",
 
-  use({
-    'gbprod/cutlass.nvim',
+  {
+    "rhysd/git-messenger.vim",
+    keys = {
+      { "<leader>gb", "<cmd>GitMessenger<cr>", desc = "Git blame" },
+    },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = true,
+  },
+
+  {
+    "gbprod/cutlass.nvim",
     config = function()
-      require('cutlass').setup({
-        cut_key = 'x'
+      require("cutlass").setup({
+        cut_key = "x",
       })
     end
-  })
+  },
 
-  use {
-    'neoclide/coc.nvim', branch = 'release'
-  }
-
-  use {
-    'ellisonleao/gruvbox.nvim',
+  -- Show popup of keybindings
+  {
+    "folke/which-key.nvim",
     config = function()
-      vim.o.background = 'dark'
-      vim.cmd([[colorscheme gruvbox]])
-    end
-  }
+      local wk = require("which-key")
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      wk.setup()
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+      wk.register {
+        ["<leader>l"] = { "Buffer next" },
+        ["<leader>h"] = { "Buffer previous" },
+        ["H"] = { "Move to beginning of line" },
+        ["L"] = { "Move to end of line" },
+        ["<leader>c"] = { "Clear search" },
+      }
+    end,
+  },
+
+  -- Line commenting
+  {
+    "echasnovski/mini.comment",
+    version = false,
+    config = function()
+      require("mini.comment").setup()
+    end,
+  },
+  -- Handle embedded languages comments
+  "JoosepAlviste/nvim-ts-context-commentstring",
+
+  -- Highlight current indented scope
+  {
+  "echasnovski/mini.indentscope",
+    version = false,
+    config = function()
+      require("mini.indentscope").setup()
+    end,
+  },
+
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      local npairs = require("nvim-autopairs")
+      local Rule = require("nvim-autopairs.rule")
+
+      npairs.setup{}
+
+      local brackets = { { "(", ")" }, { "[", "]" }, { "{", "}" } }
+      npairs.add_rules {
+        Rule(" ", " ")
+          :with_pair(function (opts)
+            local pair = opts.line:sub(opts.col - 1, opts.col)
+            return vim.tbl_contains({
+                brackets[1][1]..brackets[1][2],
+                brackets[2][1]..brackets[2][2],
+                brackets[3][1]..brackets[3][2],
+              }, pair)
+          end)
+      }
+      for _,bracket in pairs(brackets) do
+        npairs.add_rules {
+          Rule(bracket[1].." ", " "..bracket[2])
+            :with_pair(function() return false end)
+            :with_move(function(opts)
+              return opts.prev_char:match(".%"..bracket[2]) ~= nil
+            end)
+              :use_key(bracket[2])
+          }
+      end
+    end
+  },
+
+  -- Remember last file position
+  {
+    "ethanholz/nvim-lastplace",
+    config = true,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  },
+
+  -- "windwp/nvim-spectre",
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
+    config = true,
+    keys = {
+      { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Find file" },
+      { "<leader>F", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+    },
+    opts = {
+      defaults = {
+        layout_strategy = "vertical",
+        layout_config = {
+          vertical = {
+            preview_cutoff = 0.2,
+            preview_height = 0.4,
+          },
+          height = 0.9,
+          width = 0.9,
+        },
+        mappings = {
+          i = {
+            ["<esc>"] = function(...)
+              return require("telescope.actions").close(...)
+            end,
+            ["<C-j>"] = function(...)
+              return require("telescope.actions").move_selection_next(...)
+            end,
+            ["<C-k>"] = function(...)
+              return require("telescope.actions").move_selection_previous(...)
+            end,
+            ["<C-p>"] = function(...)
+              return require("telescope.actions.layout").toggle_preview(...)
+            end,
+          },
+          n = {
+            ["j"] = function(...)
+              return require("telescope.actions").move_selection_next(...)
+            end,
+            ["k"] = function(...)
+              return require("telescope.actions").move_selection_previous(...)
+            end,
+            ["gg"] = function(...)
+              return require("telescope.actions").move_to_top(...)
+            end,
+            ["G"] = function(...)
+              return require("telescope.actions").move_to_bottom(...)
+            end,
+            ["<C-p>"] = function(...)
+              return require("telescope.actions.layout").toggle_preview(...)
+            end,
+          },
+        },
+      },
+    },
+  },
+
+  { "neoclide/coc.nvim", branch = "release" },
+
+  {
+    "alexghergh/nvim-tmux-navigation",
+    keys = {
+      { "<C-h>", "<cmd>NvimTmuxNavigateLeft<cr>",  desc = "Navigate left" },
+      { "<C-j>", "<cmd>NvimTmuxNavigateDown<cr>",  desc = "Navigate down" },
+      { "<C-k>", "<cmd>NvimTmuxNavigateUp<cr>",    desc = "Navigate up" },
+      { "<C-l>", "<cmd>NvimTmuxNavigateRight<cr>", desc = "Navigate right" },
+    },
+    config = function()
+      require("nvim-tmux-navigation").setup({})
+    end,
+  },
+})

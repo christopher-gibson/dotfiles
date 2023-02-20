@@ -22,3 +22,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 
 export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
+
+export PATH=/Users/christophergibson/.local/bin:$PATH
+export PATH="`yarn global bin`:$PATH"

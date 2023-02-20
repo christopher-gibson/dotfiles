@@ -2,6 +2,10 @@
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "javascriptreact", "typescript", "typescriptreact", "ruby"],
   "sourcekit.commandPath": "/usr/bin/sourcekit-lsp",
   "suggest.noselect": true,
+  "solargraph.diagnostics": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
   "languageserver": {
     "sorbet": {
       "command": "srb",
