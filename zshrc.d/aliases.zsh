@@ -35,3 +35,7 @@ clean_nvim() {
   # symlink dotfiles again
   link_dotfiles
 }
+
+# IC helpers
+alias ic_rspec="REQUIRED_ENGINES=graph bundle exec rspec"
+alias ic_schema="REQUIRED_ENGINES=graph bundle exec rake graphql:schema:idl"

@@ -8,6 +8,7 @@
   destroy-branches = "!git branch | grep  -v '\\*\\|master\\|release' | xargs -n 1 git branch -D"
   co = checkout
   cp = cherry-pick
+  cm = "commit -m"
   last = log -1 HEAD
   ll = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --numstat
   ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
