@@ -15,5 +15,6 @@
       "initializationOptions": {},
       "settings": {}
     }
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }

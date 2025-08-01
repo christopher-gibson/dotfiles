@@ -39,3 +39,5 @@ clean_nvim() {
 # IC helpers
 alias ic_rspec="REQUIRED_ENGINES=graph bundle exec rspec"
 alias ic_schema="REQUIRED_ENGINES=graph bundle exec rake graphql:schema:idl"
+
+alias sdc="docker-compose -f ~/dev/stackadapt/stackadapt-web/docker-compose.yml exec app"

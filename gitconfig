@@ -1,6 +1,6 @@
 [user]
 	name = Chris Gibson
-	email = christopher.gibson@instacart.com
+	email = christopher.gibson@stackadapt.com
 
 [alias]
   aliases = "!git config -l | grep alias | cut -c 7-"
