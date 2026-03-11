@@ -84,7 +84,27 @@
 
 ---
 
-## Git (gitsigns)
+## Git
+
+### LazyGit (full UI — requires `brew install lazygit`)
+
+| Key | Action |
+|-----|--------|
+| `<leader>gg` | Open LazyGit |
+
+### Diffview (GitHub-style diff viewer)
+
+| Key | Action |
+|-----|--------|
+| `<leader>gv` | Open diffview (all changes) |
+| `<leader>gV` | Close diffview |
+| `<leader>gh` | Current file history |
+| `<leader>gH` | Repo history |
+| `<leader>gc` | Git commits (Telescope) |
+
+> Inside diffview: `<Tab>`/`<S-Tab>` cycle files · `q` closes panels
+
+### Gitsigns (inline hunk operations)
 
 | Key | Action |
 |-----|--------|
