@@ -23,6 +23,7 @@
   resetto = "!git fetch && git reset --hard origin/$(git branch-name)"
   pusho = "!git push --set-upstream origin $(git branch-name)"
   stashall = stash --include-untracked
+  cm = "commit -m"
 
 [core]
   attributesfile = ~/.gitattributes

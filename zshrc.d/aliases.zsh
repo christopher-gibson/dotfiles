@@ -17,7 +17,7 @@ fake() {
 }
 
 # symlink dotfiles
-alias link_dotfiles="rcup -x README.md -x setup.sh -x install -x iterm -v"
+alias link_dotfiles="rcup -x README.md -x iterm -v"
 
 clean_nvim() {
   # Remove old backups
