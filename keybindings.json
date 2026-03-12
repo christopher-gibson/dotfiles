@@ -1,0 +1,56 @@
+[
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus && activeEditorGroupIndex == 1"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLastEditorGroup",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "ctrl+l", 
+    "command": "workbench.explorer.fileView.focus",
+    "when": "editorTextFocus && activeEditorGroupLast"
+  },
+  {
+    "key": "ctrl+l", 
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorTextFocus && !activeEditorGroupLast"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "auxiliaryBarFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "auxiliaryBarFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "auxiliaryBarFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+]
