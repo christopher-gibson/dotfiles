@@ -41,19 +41,7 @@ local server_configs = {
     settings = { solargraph = { diagnostics = true, formatting = false } },
   },
   eslint = {
-    on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-      -- Auto-apply eslint fixes on save
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.code_action({
-            context = { only = { "source.fixAll.eslint" }, diagnostics = {} },
-            apply = true,
-          })
-        end,
-      })
-    end,
+    settings = { eslint = { autoFixOnSave = true } },
   },
 }
 
@@ -81,17 +69,36 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      -- vim.lsp.config (0.11 native API) does NOT support on_attach;
+      -- use the LspAttach autocmd instead.
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          on_attach(client, args.buf)
+
+          if client and client.name == "eslint" then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = args.buf,
+              callback = function()
+                vim.lsp.buf.code_action({
+                  context = { only = { "source.fixAll.eslint" }, diagnostics = {} },
+                  apply = true,
+                })
+              end,
+            })
+          end
+        end,
+      })
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "ts_ls", "eslint", "lua_ls", "solargraph", "cssls", "html", "jsonls",
         },
         automatic_installation = true,
-        -- Called for each installed server — use native vim.lsp API
         handlers = {
           function(server_name)
             local cfg = vim.tbl_deep_extend("force", {
               capabilities = capabilities,
-              on_attach    = on_attach,
             }, server_configs[server_name] or {})
             vim.lsp.config(server_name, cfg)
             vim.lsp.enable(server_name)
