@@ -29,6 +29,6 @@ map("n", "<down>",  "<C-w>10-", { desc = "Resize window down" })
 map("n", "<leader>R", "<cmd>source $MYVIMRC<cr>", { desc = "Reload config" })
 
 -- Diagnostic navigation (LSP)
-map("n", "<leader>j", vim.diagnostic.goto_next,  { desc = "Next diagnostic" })
-map("n", "<leader>k", vim.diagnostic.goto_prev,  { desc = "Prev diagnostic" })
+map("n", "<leader>j", function() vim.diagnostic.jump({ count = 1 }) end,  { desc = "Next diagnostic" })
+map("n", "<leader>k", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Prev diagnostic" })
 map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open diagnostic float" })

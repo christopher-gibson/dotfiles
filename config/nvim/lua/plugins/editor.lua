@@ -55,7 +55,7 @@ return {
         options = {
           -- Use treesitter to determine comment string for embedded languages
           custom_commentstring = function()
-            return require("ts_context_commentstring.internal").calculate_commentstring()
+            return require("ts_context_commentstring").calculate_commentstring()
               or vim.bo.commentstring
           end,
         },
