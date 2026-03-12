@@ -24,4 +24,4 @@ export EDITOR='nvim'
 export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
 
 export PATH=/Users/christophergibson/.local/bin:$PATH
-export PATH="`yarn global bin`:$PATH"
+export PATH="/Users/chris/.local/share/mise/shims:$PATH"
