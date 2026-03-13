@@ -13,6 +13,7 @@ return {
         transparent_mode = false,
       })
       vim.cmd([[colorscheme gruvbox]])
+      vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#bdae93", italic = true })
     end,
   },
 
@@ -122,6 +123,13 @@ return {
     keys = {
       { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
     },
+  },
+
+  -- Better UI for vim.ui.select / vim.ui.input
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
 
   -- Keymap popup (v3 API)

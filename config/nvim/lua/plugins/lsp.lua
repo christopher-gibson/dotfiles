@@ -37,9 +37,7 @@ local server_configs = {
       },
     },
   },
-  solargraph = {
-    settings = { solargraph = { diagnostics = true, formatting = false } },
-  },
+  ruby_lsp = {},
   eslint = {
     settings = { eslint = { autoFixOnSave = true } },
   },
@@ -92,7 +90,7 @@ return {
 
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "ts_ls", "eslint", "lua_ls", "solargraph", "cssls", "html", "jsonls",
+          "ts_ls", "eslint", "lua_ls", "ruby_lsp", "cssls", "html", "jsonls",
         },
         automatic_installation = true,
         handlers = {

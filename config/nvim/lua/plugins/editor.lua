@@ -83,8 +83,18 @@ return {
     end,
   },
 
-  -- Sort with motion (gs to sort)
-  "christoomey/vim-sort-motion",
+  -- Sort operator (gs{motion} to sort, gss for current line)
+  {
+    "echasnovski/mini.operators",
+    version = false,
+    opts = {
+      evaluate = { prefix = "" },
+      exchange = { prefix = "" },
+      multiply = { prefix = "" },
+      replace  = { prefix = "" },
+      sort     = { prefix = "gs" },
+    },
+  },
 
   -- Cut without polluting yank register (x key cuts cleanly)
   {
