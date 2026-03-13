@@ -1,3 +1,5 @@
+eval "$(mise activate zsh)"
+
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="gibson"
@@ -20,6 +22,3 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 
 export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/share/mise/shims:$PATH"
