@@ -174,6 +174,18 @@
 
 ---
 
+## Markdown Preview
+
+| Key | Action |
+|-----|--------|
+| `<leader>mp` | Toggle preview in browser |
+| `:MarkdownPreview` | Start preview |
+| `:MarkdownPreviewStop` | Stop preview |
+
+> Opens a live-updating preview in your default browser. Auto-scrolls as you move through the file.
+
+---
+
 ## Misc
 
 | Key | Action |
