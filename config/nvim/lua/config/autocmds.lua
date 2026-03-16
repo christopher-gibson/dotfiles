@@ -31,3 +31,21 @@ autocmd("VimResized", {
     vim.cmd("tabdo wincmd =")
   end,
 })
+
+-- Dim editor when terminal loses focus (requires tmux focus-events)
+local focus_group = augroup("terminal_focus", { clear = true })
+autocmd("FocusLost", {
+  group = focus_group,
+  callback = function()
+    vim.g._normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+    vim.api.nvim_set_hl(0, "Normal", { bg = "#32302f" })
+  end,
+})
+autocmd("FocusGained", {
+  group = focus_group,
+  callback = function()
+    if vim.g._normal_bg then
+      vim.api.nvim_set_hl(0, "Normal", { bg = vim.g._normal_bg })
+    end
+  end,
+})
