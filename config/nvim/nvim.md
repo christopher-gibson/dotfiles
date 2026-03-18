@@ -53,7 +53,9 @@
 
 | Key | Action |
 |-----|--------|
-| `<leader>f` | Find files |
+| `<leader>f` | Find files (wait after `f` for submenu: `i` / `I` / `r` / …) |
+| `<leader>fi` | Find files incl. gitignored **and** dotdirs (e.g. `.cursor`) |
+| `<leader>fI` | Live grep incl. gitignored **and** dotdirs |
 | `<leader>F` | Live grep |
 | `<leader>b` | Buffers |
 | `<leader>fr` | Recent files |
@@ -64,7 +66,7 @@
 | `<leader>ft` | TODOs |
 | `<leader>gc` | Git commits |
 
-**Inside Telescope:** `<C-j>`/`<C-k>` navigate · `<esc>` close · `<C-p>` toggle preview · `<C-d>` delete buffer
+**Inside Telescope:** `<C-j>`/`<C-k>` navigate · `<esc>` close · `<C-p>` toggle preview · `<C-d>` delete buffer · `<M-i>` toggle gitignored **+ dotfiles** *(Alt+i)*
 
 ---
 
