@@ -117,6 +117,31 @@ return {
     },
     config = function(_, opts)
       local telescope = require("telescope")
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
+
+      local toggle_no_ignore = function(prompt_bufnr)
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        local current_input = action_state.get_current_line()
+        actions.close(prompt_bufnr)
+        local was_ignored = picker.finder.no_ignore
+        require("telescope.builtin").find_files({
+          no_ignore = not was_ignored,
+          hidden = not was_ignored,
+          default_text = current_input,
+          prompt_title = was_ignored and "Find Files" or "Find Files (All)",
+        })
+      end
+
+      opts.pickers = {
+        find_files = {
+          mappings = {
+            i = { ["<C-h>"] = toggle_no_ignore },
+            n = { ["<C-h>"] = toggle_no_ignore },
+          },
+        },
+      }
+
       telescope.setup(opts)
       pcall(telescope.load_extension, "fzf")
     end,
