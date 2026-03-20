@@ -28,7 +28,7 @@
 [core]
   attributesfile = ~/.gitattributes
   editor = nvim
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore
 	autocrlf = false
 	whitespace = trailing-space,space-before-tab
 [filter "lfs"]
