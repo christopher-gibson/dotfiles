@@ -8,7 +8,18 @@ return {
       { "<C-k>", "<cmd>NvimTmuxNavigateUp<cr>",    desc = "Navigate up" },
       { "<C-l>", "<cmd>NvimTmuxNavigateRight<cr>", desc = "Navigate right" },
     },
-    opts = {},
+    config = function()
+      require("nvim-tmux-navigation").setup({})
+
+      local tmux_util = require("nvim-tmux-navigation.tmux_util")
+      local orig = tmux_util.should_tmux_control
+      tmux_util.should_tmux_control = function(is_same_winnr, disable_nav_when_zoomed)
+        if not disable_nav_when_zoomed then
+          return is_same_winnr
+        end
+        return orig(is_same_winnr, disable_nav_when_zoomed)
+      end
+    end,
   },
 
   -- File explorer (edit directories like buffers)

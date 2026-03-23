@@ -65,6 +65,9 @@ opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 
+-- Shell (use /bin/sh for vim.fn.system() calls — zsh startup is ~100ms, sh is ~3ms)
+opt.shell = "/bin/sh"
+
 -- Files
 opt.backup = false
 opt.writebackup = false
