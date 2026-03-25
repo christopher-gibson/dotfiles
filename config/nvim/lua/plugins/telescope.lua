@@ -117,30 +117,8 @@ return {
     },
     config = function(_, opts)
       local telescope = require("telescope")
-      local actions = require("telescope.actions")
-      local action_state = require("telescope.actions.state")
 
-      local toggle_no_ignore = function(prompt_bufnr)
-        local picker = action_state.get_current_picker(prompt_bufnr)
-        local current_input = action_state.get_current_line()
-        actions.close(prompt_bufnr)
-        local was_ignored = picker.finder.no_ignore
-        require("telescope.builtin").find_files({
-          no_ignore = not was_ignored,
-          hidden = not was_ignored,
-          default_text = current_input,
-          prompt_title = was_ignored and "Find Files" or "Find Files (All)",
-        })
-      end
-
-      opts.pickers = {
-        find_files = {
-          mappings = {
-            i = { ["<C-h>"] = toggle_no_ignore },
-            n = { ["<C-h>"] = toggle_no_ignore },
-          },
-        },
-      }
+      opts.pickers = {}
 
       telescope.setup(opts)
       pcall(telescope.load_extension, "fzf")
@@ -164,6 +142,14 @@ return {
             ["<C-k>"] = function(...) return require("telescope.actions").move_selection_previous(...) end,
             ["<C-p>"] = function(...) return require("telescope.actions.layout").toggle_preview(...) end,
             ["<C-d>"] = function(...) return require("telescope.actions").delete_buffer(...) end,
+            ["<C-l>"] = function(prompt_bufnr)
+              require("telescope.actions").close(prompt_bufnr)
+              vim.schedule(function() require("nvim-tmux-navigation").NvimTmuxNavigateRight() end)
+            end,
+            ["<C-h>"] = function(prompt_bufnr)
+              require("telescope.actions").close(prompt_bufnr)
+              vim.schedule(function() require("nvim-tmux-navigation").NvimTmuxNavigateLeft() end)
+            end,
           },
           n = {
             ["j"]    = function(...) return require("telescope.actions").move_selection_next(...) end,
